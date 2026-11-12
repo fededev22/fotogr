@@ -10,6 +10,33 @@ export type Item = {
 
 export type Group = { id: string; title: string; items: Item[] };
 
+export const families = [
+  {
+    id: "papel",
+    title: "Papel",
+    line: "Copias, ampliaciones y Polaroid.",
+    ids: ["copias", "ampliaciones", "polaroid"],
+  },
+  {
+    id: "formato",
+    title: "Gran formato",
+    line: "Lonas y vinilos.",
+    ids: ["gran"],
+  },
+  {
+    id: "eventos",
+    title: "Eventos",
+    line: "Gráfica, libros, marcos y álbumes.",
+    ids: ["grafica", "evento", "banner", "marcos", "albumes"],
+  },
+  {
+    id: "archivo",
+    title: "Archivo",
+    line: "Rollos y diapositivas.",
+    ids: ["digital"],
+  },
+];
+
 const p = (n: number) => `/catalog/${String(n).padStart(2, "0")}.jpg`;
 
 export const groups: Group[] = [

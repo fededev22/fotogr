@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Figtree, Newsreader } from "next/font/google";
+import { Bodoni_Moda, Sora } from "next/font/google";
+import { Nav } from "@/components/Nav";
 import "./globals.css";
 
-const sans = Figtree({
+const sans = Sora({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const display = Newsreader({
+const display = Bodoni_Moda({
   variable: "--font-display",
   subsets: ["latin"],
 });
@@ -21,7 +22,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${sans.variable} ${display.variable} h-full`}>
-      <body className="min-h-full bg-stone-50 font-[family-name:var(--font-sans)] text-stone-950 antialiased">
+      <body className="min-h-full font-[family-name:var(--font-sans)] antialiased">
+        <Nav />
         {children}
       </body>
     </html>
