@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impresiones personalizadas en La Plata</title>
+  <meta name="description" content="Elegí tamaño, papel y acabado. El pedido se envía por WhatsApp.">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Sora:wght@400;550&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main>
+    <h1>Impresiones</h1>
+    <p>Envianos las fotos por WhatsApp después de mandar el pedido.</p>
+    <form id="print-form">
+      <label>Tamaño<select id="size"></select></label>
+      <label>Papel<select id="paper"></select></label>
+      <label>Acabado<select id="finish"></select></label>
+      <label>Cantidad<input id="qty" type="number" min="1" value="1"></label>
+      <p id="estimate"></p>
+      <button type="submit">Agregar al pedido</button>
+    </form>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const size = document.getElementById("size");
+      PRINTS.sizes.forEach((item) => size.add(new Option(`${item.name} · ${money(item.price)}`, item.id)));
+      PRINTS.papers.forEach((item) => document.getElementById("paper").add(new Option(item, item)));
+      PRINTS.finishes.forEach((item) => document.getElementById("finish").add(new Option(item, item)));
+      const estimate = () => {
+        const chosen = PRINTS.sizes.find((item) => item.id === size.value);
+        const qty = Number(document.getElementById("qty").value || 1);
+        document.getElementById("estimate").textContent = `Estimado: ${money(chosen.price * qty)}`;
+      };
+      document.getElementById("print-form").addEventListener("input", estimate);
+      document.getElementById("print-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const chosen = PRINTS.sizes.find((item) => item.id === size.value);
+        const paper = document.getElementById("paper").value;
+        const finish = document.getElementById("finish").value;
+        addItem({
+          id: `print-${chosen.id}-${paper}-${finish}`,
+          name: `Impresión ${chosen.name} ${paper} ${finish}`,
+          price: chosen.price,
+          qty: Number(document.getElementById("qty").value || 1),
+        });
+        location.href = "pedido.html";
+      });
+      estimate();
+    });
+  </script>
+</body>
+</html>

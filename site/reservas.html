@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reservas | Fotografía Digital</title>
+  <meta name="description" content="Pedí turno para un servicio de fotografía en La Plata por WhatsApp.">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Sora:wght@400;550&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main>
+    <h1>Reservas</h1>
+    <form id="book">
+      <label>Servicio<select id="service"></select></label>
+      <label>Fecha<input id="date" type="date" required></label>
+      <label>Hora<input id="time" type="time" required></label>
+      <label>Nombre<input id="name" required></label>
+      <button>Enviar solicitud por WhatsApp</button>
+    </form>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      SERVICES.forEach((item) => document.getElementById("service").add(new Option(item.name, item.name)));
+      document.getElementById("book").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const text = `Hola ${STORE.business}! Quiero reservar:\nServicio: ${document.getElementById("service").value}\nFecha: ${document.getElementById("date").value}\nHora: ${document.getElementById("time").value}\nNombre: ${document.getElementById("name").value}`;
+        window.open(`https://wa.me/${STORE.phone}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+      });
+    });
+  </script>
+</body>
+</html>

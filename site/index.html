@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fotografía en La Plata | Fotografía Digital</title>
+  <meta name="description" content="Laboratorio y tienda de fotografía en La Plata. Servicios, impresiones y pedidos por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Sora:wght@400;550;650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div>
+        <p>La Plata</p>
+        <h1>La foto, en tus manos.</h1>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/5492213999289?text=Hola%20Fotograf%C3%ADa%20Digital!%20Quiero%20hacer%20un%20pedido">Pedir por WhatsApp</a>
+          <a class="btn light" href="tienda.html">Ver productos</a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Servicios</h2>
+      <div class="grid" id="home-services"></div>
+    </section>
+    <section>
+      <h2>Trabajos</h2>
+      <div class="grid" id="home-work"></div>
+    </section>
+    <section class="panel quote">
+      <p>“Nos devolvieron las fotos del viaje con un color que en el teléfono no se veía.”</p>
+      <p>Cliente de ejemplo · La Plata</p>
+    </section>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("home-services").innerHTML = SERVICES.slice(0, 3).map(card).join("");
+      document.getElementById("home-work").innerHTML = GALLERY.slice(0, 3).map((photo) =>
+        `<img src="${photo.src}" alt="${photo.alt}" loading="lazy">`).join("");
+    });
+  </script>
+</body>
+</html>
