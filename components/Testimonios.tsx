@@ -9,7 +9,7 @@ export function Testimonios() {
       <h2 className="font-serif text-4xl">Testimonios</h2>
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {ready.map((item) => (
-          <blockquote key={item.name} className="rounded-3xl bg-white p-6 shadow-sm">
+          <blockquote key={item.name} className="rounded-3xl bg-[var(--surface)] p-6 shadow-sm">
             <p>{item.quote}</p>
             <footer className="mt-4 text-sm text-[var(--muted)]">
               {item.name}

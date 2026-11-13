@@ -31,7 +31,7 @@ export function Contacto() {
       <div>
         <h2 className="font-serif text-4xl">Contacto</h2>
         <p className="mt-4 text-[var(--muted)]">Laboratorio en La Plata. Escribinos para coordinar tu trabajo o pedir presupuesto.</p>
-        <a className="mt-6 inline-block rounded-full bg-[var(--accent)] px-6 py-3 text-white" href={waLink("Hola, quiero coordinar un trabajo")}>
+        <a className="mt-6 inline-flex min-h-11 items-center rounded-full bg-[var(--accent)] px-6 font-semibold text-[var(--on-accent)]" href={waLink("Hola, quiero coordinar un trabajo")}>
           WhatsApp
         </a>
         <ul className="mt-6 space-y-2">
@@ -43,10 +43,10 @@ export function Contacto() {
           ))}
         </ul>
         <form className="mt-8 grid gap-3" onSubmit={submit}>
-          <input className="rounded-xl border border-[var(--line)] bg-white px-4 py-3" name="nombre" placeholder="Nombre" required />
-          <input className="rounded-xl border border-[var(--line)] bg-white px-4 py-3" name="necesidad" placeholder="Qué necesitás" required />
-          <textarea className="rounded-xl border border-[var(--line)] bg-white px-4 py-3" name="mensaje" placeholder="Mensaje" rows={4} />
-          <button className="rounded-full bg-[var(--ink)] px-5 py-3 text-[var(--paper)]">Enviar por WhatsApp</button>
+          <input className="min-h-11 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-4 text-[var(--ink)]" name="nombre" placeholder="Nombre" required />
+          <input className="min-h-11 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-4 text-[var(--ink)]" name="necesidad" placeholder="Qué necesitás" required />
+          <textarea className="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-[var(--ink)]" name="mensaje" placeholder="Mensaje" rows={4} />
+          <button className="min-h-11 rounded-full bg-[var(--ink)] px-5 font-semibold text-[var(--paper)]">Enviar por WhatsApp</button>
           {note ? <p>{note}</p> : null}
         </form>
       </div>

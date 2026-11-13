@@ -6,7 +6,7 @@ export function Proceso() {
       <h2 className="font-serif text-4xl">Cómo trabajamos</h2>
       <ol className="mt-8 grid gap-4 md:grid-cols-4">
         {steps.map((step, index) => (
-          <li key={step} className="rounded-3xl bg-white p-6 shadow-sm">
+          <li key={step} className="rounded-3xl bg-[var(--surface)] p-6 shadow-sm">
             <span className="font-serif text-4xl text-[var(--accent)]">{index + 1}</span>
             <p className="mt-3 text-lg">{step}</p>
           </li>
